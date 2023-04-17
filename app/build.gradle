@@ -9,6 +9,10 @@ android {
     namespace 'com.malfa.bancodefilmes'
     compileSdk 32
 
+    def localPropertiesFile = rootProject.file("local.properties")
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(localPropertiesFile))
+
     defaultConfig {
         applicationId "com.malfa.bancodefilmes"
         minSdk 21
@@ -20,6 +24,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildConfigField "String", "APIKEY", localProperties['APIKEY']
     }
 
     buildTypes {
@@ -81,4 +87,9 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$moshi_version"
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
     implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
 }

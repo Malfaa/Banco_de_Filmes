@@ -8,21 +8,21 @@ import com.malfa.bancodefilmes.Constantes
 import com.malfa.bancodefilmes.retrofit.models.Filme
 
 @Database(entities = [Filme::class], version = 1, exportSchema = false)
-abstract class FilmesDatabase : RoomDatabase(){
+abstract class FilmeDatabase : RoomDatabase(){
 
     abstract val dao: FilmeDao
 
     companion object {
         @Volatile
-        private var INSTANCE: FilmesDatabase?= null
+        private var INSTANCE: FilmeDatabase?= null
 
-        fun getInstance(context: Context): FilmesDatabase{
+        fun getInstance(context: Context): FilmeDatabase{
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        FilmesDatabase::class.java,
+                        FilmeDatabase::class.java,
                         Constantes.TABLE_NAME
                     )
                         .build()

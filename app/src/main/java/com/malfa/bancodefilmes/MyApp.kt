@@ -1,12 +1,11 @@
 package com.malfa.bancodefilmes
 
 import android.app.Application
-import com.malfa.bancodefilmes.data.FilmesDatabase
-import com.malfa.bancodefilmes.repository.Repositorio
+import com.malfa.bancodefilmes.data.FilmeDatabase
+import com.malfa.bancodefilmes.retrofit.OmdbApi
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
-import org.koin.androidx.viewmodel.dsl.viewModel
 
 class MyApp : Application() {
     //koin
@@ -14,12 +13,10 @@ class MyApp : Application() {
         super.onCreate()
 
         val modulo = module {
-            single { FilmesDatabase.getInstance(this@MyApp)}
-//            single { OmdbApi }
+            single { FilmeDatabase.getInstance(this@MyApp)}
+            single { OmdbApi }
 //            single { Repositorio()}
-//            viewModel{
-//
-//            }
+//            viewModel{}
         }
         startKoin {
             androidContext(this@MyApp)
