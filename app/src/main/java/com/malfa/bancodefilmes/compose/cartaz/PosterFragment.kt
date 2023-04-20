@@ -7,17 +7,16 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import coil.compose.AsyncImage
 import com.malfa.bancodefilmes.MainViewModel
 import com.malfa.bancodefilmes.R
+import com.malfa.bancodefilmes.ui.theme.cartaz_bg
 
 @Composable
 fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
     Column(
         modifier = modifier
-            .clickable {  }
-//            .background(Color)
+            .background(cartaz_bg)
 
     ) {
         AsyncImage(model = viewModel.filmes.Poster, contentDescription = null)

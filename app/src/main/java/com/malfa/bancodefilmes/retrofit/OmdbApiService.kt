@@ -19,7 +19,7 @@ object OmdbApi{
 
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(ScalarsConverterFactory.create())
-        .addConverterFactory(MoshiConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(BASE_URL)
         .build()
 
