@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.malfa.bancodefilmes.compose.MainFragment
 import com.malfa.bancodefilmes.ui.theme.BancoDeFilmesTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,22 +23,18 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    MainFragment()
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     BancoDeFilmesTheme {
-        Greeting("Android")
+        MainFragment()
     }
 }

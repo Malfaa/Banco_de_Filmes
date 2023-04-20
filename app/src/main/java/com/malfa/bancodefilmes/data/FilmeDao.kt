@@ -10,11 +10,11 @@ import com.malfa.bancodefilmes.retrofit.models.Filme
 @Dao
 interface FilmeDao {
     @Query("SELECT * FROM ${Constantes.TABLE_NAME}")
-    fun infosFilmes(): List<Filme>
+    fun infosFilmes(): Filme
 
     @Insert
     fun atualizandoFilme(filme: Filme)
 
-    @Delete
-    fun deletandoFilme(filme: Filme)
+    @Query("DELETE FROM ${Constantes.TABLE_NAME}")
+    fun deletandoFilme()
 }

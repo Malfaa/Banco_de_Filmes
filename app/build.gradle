@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace 'com.malfa.bancodefilmes'
-    compileSdk 32
+    compileSdk 33
 
     def localPropertiesFile = rootProject.file("local.properties")
     def localProperties = new Properties()
@@ -16,7 +16,7 @@ android {
     defaultConfig {
         applicationId "com.malfa.bancodefilmes"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -45,7 +45,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.1.1'
+        kotlinCompilerExtensionVersion '1.4.2'
     }
     packagingOptions {
         resources {
@@ -92,4 +92,8 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+
+    //Coil
+    implementation "io.coil-kt:coil-compose:$coil_version"
+
 }

@@ -9,7 +9,7 @@ class OmdbHttpClient : OkHttpClient(){
                 .addInterceptor { chain ->
                     val original = chain.request()
                     val url = original
-                        .url()
+                        .url
                         .newBuilder()
                         .build()
                     val request = original
