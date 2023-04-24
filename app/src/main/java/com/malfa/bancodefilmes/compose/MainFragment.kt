@@ -17,12 +17,11 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun MainFragment (modifier: Modifier = Modifier, viewModel : MainViewModel = koinViewModel()){
     Column (modifier = modifier
-        .clickable {  }
         .background(background)
     ){
         PosterFragment(modifier, viewModel)
         Spacer(modifier = modifier.height(20.dp))
-        SearchFragment()
+        SearchFragment(modifier, viewModel)
     }
 
 }

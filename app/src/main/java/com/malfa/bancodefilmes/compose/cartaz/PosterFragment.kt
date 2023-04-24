@@ -7,16 +7,32 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.malfa.bancodefilmes.MainViewModel
 import com.malfa.bancodefilmes.R
+import com.malfa.bancodefilmes.compose.MainFragment
+import com.malfa.bancodefilmes.compose.info_filme.InfoFragment
 import com.malfa.bancodefilmes.ui.theme.cartaz_bg
 
 @Composable
 fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "main") {
+        composable("main") { MainFragment() }
+        composable("info") { InfoFragment() }
+    }
     Column(
         modifier = modifier
             .background(cartaz_bg)
+            .clickable {
+                navController.navigate("info"){
+                    popUpTo("main")
+                }
+            }
 
     ) {
         AsyncImage(model = viewModel.filmes.Poster, contentDescription = null)
