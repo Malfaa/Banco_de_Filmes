@@ -23,7 +23,7 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
 
     NavHost(navController = navController, startDestination = "main") {
         composable("main") { MainFragment() }
-        composable("info") { InfoFragment() }
+        composable("info"){ InfoFragment(viewModel) }
     }
     Column(
         modifier = modifier

@@ -1,7 +1,6 @@
 package com.malfa.bancodefilmes.compose
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -15,7 +14,7 @@ import com.malfa.bancodefilmes.ui.theme.background
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MainFragment (modifier: Modifier = Modifier, viewModel : MainViewModel = koinViewModel()){
+fun MainFragment ( modifier: Modifier = Modifier, viewModel : MainViewModel = koinViewModel() ){
     Column (modifier = modifier
         .background(background)
     ){

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Banco De Filmes</string>
+
+    <string name="poster_content_description">Poster do filme: %s</string>
+
+<!--    Antes do saiba mais em Info Fragment -->
+    <string name="titulo_info">Título: %s</string>
+    <string name="genero_info">Gênero: %s</string>
+    <string name="rated_info">Classificação: %s</string>
+    <string name="lancado_info">Estreiou: %s</string>
+    <string name="ano_info">Ano: %s</string>
+
+<!--    Saiba Mais -->
+    <string name="saiba_mais">Saiba Mais</string>
+
+<!--    Após saiba mais em Info Fragment -->
+    <string name="plot_info">Plot: %s</string>
+
 </resources>

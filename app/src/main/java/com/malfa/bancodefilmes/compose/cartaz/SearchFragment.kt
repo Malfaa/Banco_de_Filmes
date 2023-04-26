@@ -1,10 +1,18 @@
 package com.malfa.bancodefilmes.compose.cartaz
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material.TextField
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.*
+import com.malfa.bancodefilmes.R
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import com.malfa.bancodefilmes.MainViewModel
 
@@ -15,11 +23,21 @@ fun SearchFragment(modifier: Modifier, viewModel: MainViewModel){
             mutableStateOf(TextFieldValue(""))
         }
 
-        TextField(value = text, onValueChange = { novoTexto ->
-            text = novoTexto
-        })
-
-       try {
+        OutlinedTextField(
+            value = text,
+            onValueChange = { novoTexto ->
+                text = novoTexto
+            },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.List,
+                    contentDescription = "ícone de filme"
+                )
+            }
+        )
+// TODO: Toast.makeText(context, "Filme não encontrado.\nTente novamente.", Toast.LENGTH_SHORT).show()
+        try {
             viewModel.atualizandoFilme(text.text
                 .lowercase()
                 .replace("/[^A-Z0-9]+/ig", "_")
