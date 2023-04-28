@@ -11,55 +11,55 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = Constantes.TABLE_NAME)
 data class Filme (
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long?,
     @Json(name = "Title")
-    val Title: String,
+    val Title: String?,
     @Json(name = "Year")
-    val Year: Int,
+    val Year: Int?,
     @Json(name = "Rated")
-    val Rated: String,
+    val Rated: String?,
     @Json(name = "Released")
-    val Released: String,
+    val Released: String?,
     @Json(name = "Runtime")
-    val Runtime: String,
+    val Runtime: String?,
     @Json(name = "Genre")
-    val Genre: String,
+    val Genre: String?,
     @Json(name = "Director")
-    val Director: String,
+    val Director: String?,
     @Json(name = "Writer")
-    val Writer: String,
+    val Writer: String?,
     @Json(name = "Actors")
-    val Actors: String,
+    val Actors: String?,
     @Json(name = "Plot")
-    val Plot: String,
+    val Plot: String?,
     @Json(name = "Language")
-    val Language: String,
+    val Language: String?,
     @Json(name = "Country")
-    val Country: String,
+    val Country: String?,
     @Json(name = "Awards")
-    val Awards: String,
+    val Awards: String?,
     @Json(name = "Poster")
-    val Poster: String,
+    val Poster: String?,
     @Json(name = "Ratings")
-    val Ratings: List<Rating>,
+    val Ratings: List<Rating>?,
     @Json(name = "Metascore")
-    val Metascore: Int,
+    val Metascore: Int?,
     @Json(name = "imdbRating")
-    val imdbRating: Double,
+    val imdbRating: Double?,
     @Json(name = "imdbVotes")
-    val imdbVotes: Double,
+    val imdbVotes: Double?,
     @Json(name = "imdbID")
-    val imdbID: String,
+    val imdbID: String?,
     @Json(name = "Type")
-    val Type: String,
+    val Type: String?,
     @Json(name = "DVD")
-    val DVD: String,
+    val DVD: String?,
     @Json(name = "BoxOffice")
-    val BoxOffice: String,
+    val BoxOffice: String?,
     @Json(name = "Production")
-    val Production: String,
+    val Production: String?,
     @Json(name = "Website")
-    val Website: String,
+    val Website: String?,
     @Json(name = "Response")
-    val Response: Boolean
+    val Response: Boolean?
 ): Parcelable

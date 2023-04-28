@@ -14,9 +14,9 @@ abstract class FilmeDatabase : RoomDatabase(){
 
     companion object {
         @Volatile
-        private var INSTANCE: FilmeDatabase?= null
+        private var INSTANCE: FilmeDatabase? = null
 
-        fun getInstance(context: Context): FilmeDatabase{
+        fun getInstance(context: Context): FilmeDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
@@ -25,6 +25,8 @@ abstract class FilmeDatabase : RoomDatabase(){
                         FilmeDatabase::class.java,
                         Constantes.TABLE_NAME
                     )
+                        .fallbackToDestructiveMigration()
+                        .createFromAsset("database/ice_age.db")
                         .build()
 
                     INSTANCE = instance

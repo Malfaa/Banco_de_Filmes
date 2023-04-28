@@ -15,5 +15,21 @@
 
 <!--    Após saiba mais em Info Fragment -->
     <string name="plot_info">Plot: %s</string>
+    <string name="director_info">Director: %s</string>
+    <string name="writer_info">Writer: %s</string>
+    <string name="actors_info">Actors: %s</string>
+    <string name="runtime_info">Runtime: %s</string>
+    <string name="language_info">Language: %s</string>
+    <string name="country_info">Country: %s</string>
+    <string name="awards_info">Awards: %s</string>
+    <string name="ratings_info">Ratings: %s</string>
+    <string name="metascore_info">Metascore: %s</string>
+    <string name="imdb_rating_info">imdbRating: %s</string>
+    <string name="imdb_id_info">imdbID: %s</string>
+    <string name="type_info">Type: %s</string>
+    <string name="dvd_info">DVD: %s</string>
+    <string name="box_office_info">BoxOffice: %s</string>
+    <string name="production_info">Production: %s</string>
+    <string name="website_info">Website: %s</string>
 
 </resources>

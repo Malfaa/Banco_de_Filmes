@@ -15,10 +15,10 @@ class MyApp : Application() {
         super.onCreate()
 
         val modulo = module {
-            single { FilmeDatabase.getInstance(this@MyApp)}
+            single { FilmeDatabase.getInstance(this@MyApp) }
             single { OmdbApi }
             single { RepositorioImpl( get() as OmdbApi, get() as FilmeDatabase) }
-            viewModel{ MainViewModel(get() as RepositorioImpl)}
+            viewModel{ MainViewModel(get() as RepositorioImpl) }
         }
 
         startKoin {

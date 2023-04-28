@@ -1,6 +1,5 @@
 package com.malfa.bancodefilmes.compose.cartaz
 
-import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Row
@@ -10,8 +9,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.*
-import com.malfa.bancodefilmes.R
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import com.malfa.bancodefilmes.MainViewModel
@@ -36,7 +35,6 @@ fun SearchFragment(modifier: Modifier, viewModel: MainViewModel){
                 )
             }
         )
-// TODO: Toast.makeText(context, "Filme não encontrado.\nTente novamente.", Toast.LENGTH_SHORT).show()
         try {
             viewModel.atualizandoFilme(text.text
                 .lowercase()
@@ -44,6 +42,7 @@ fun SearchFragment(modifier: Modifier, viewModel: MainViewModel){
             )
         }catch (e : Exception){
             Log.e("SearchFragment", e.message.toString())
+            Toast.makeText(LocalContext.current, "Filme não encontrado.\nTente novamente.", Toast.LENGTH_SHORT).show()
         }
     }
 }
