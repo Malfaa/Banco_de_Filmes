@@ -12,7 +12,7 @@ interface Repositorio{
 
 class RepositorioImpl(private val api: OmdbApi, private val database : FilmeDatabase) : Repositorio {
     //Network & Database
-    val getFilme = database.dao.infosFilmes()
+    val getFilme = database.dao.infosFilme()
 
     override suspend fun cacheFilme(filme: String) {
         withContext(Dispatchers.IO){

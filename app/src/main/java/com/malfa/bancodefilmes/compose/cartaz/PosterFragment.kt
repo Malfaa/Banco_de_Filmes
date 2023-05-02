@@ -38,12 +38,12 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
             }
 
     ) {
-        AsyncImage(model = viewModel.filmes.Poster, contentDescription = null)
+        AsyncImage(model = viewModel.filmes.value?.Poster, contentDescription = null)
 
         Row() {
-            Text(text = viewModel.filmes.Title.toString())
+            Text(text = viewModel.filmes.value?.Title.toString())
             Spacer(modifier = modifier.width(20.dp))
-            val imagem = when (viewModel.filmes.Rated) {
+            val imagem = when (viewModel.filmes.value?.Rated) {
                 "G" -> R.drawable.livre_vetor
                 "PG" -> R.drawable.dez_vetor
                 "PG-13" -> R.drawable.catorze_vetor
@@ -54,7 +54,7 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
 
         }
 
-        Text(text = viewModel.filmes.Genre.toString())
+        Text(text = viewModel.filmes.value?.Genre.toString())
 
     }
 

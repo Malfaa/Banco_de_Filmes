@@ -9,10 +9,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 //@JsonClass(generateAdapter = true)
-@Entity(tableName = Constantes.ENTITY_NAME)
+@Entity(tableName = Constantes.TABLE_NAME)
 data class Filme (
     @PrimaryKey(autoGenerate = true)
-    val id: Long?,
+    val id: Long? = 0,
     @Json(name = "Title")
     val Title: String?,
     @Json(name = "Year")
@@ -41,8 +41,8 @@ data class Filme (
     val Awards: String?,
     @Json(name = "Poster")
     val Poster: String?,
-    @Json(name = "Ratings")
-    val Ratings: List<Rating>?,
+//    @Json(name = "Ratings")
+//    val Ratings: MutableList<Rating>?,
     @Json(name = "Metascore")
     val Metascore: String?,
     @Json(name = "imdbRating")

@@ -7,10 +7,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Rating(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
+//    @PrimaryKey(autoGenerate = true)
+//    val id: Long,
     @Json(name = "Source")
-    var Source: String?,
+    val Source: String?,
     @Json(name = "Value")
-    var Value: String?
+    val Value: String?
 ): Parcelable
