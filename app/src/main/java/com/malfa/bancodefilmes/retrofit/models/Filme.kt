@@ -3,19 +3,20 @@ package com.malfa.bancodefilmes.retrofit.models
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.malfa.bancodefilmes.Constantes
+import com.malfa.bancodefilmes.utils.Constantes
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = Constantes.TABLE_NAME)
+//@JsonClass(generateAdapter = true)
+@Entity(tableName = Constantes.ENTITY_NAME)
 data class Filme (
     @PrimaryKey(autoGenerate = true)
     val id: Long?,
     @Json(name = "Title")
     val Title: String?,
     @Json(name = "Year")
-    val Year: Int?,
+    val Year: String?,
     @Json(name = "Rated")
     val Rated: String?,
     @Json(name = "Released")
@@ -43,11 +44,11 @@ data class Filme (
     @Json(name = "Ratings")
     val Ratings: List<Rating>?,
     @Json(name = "Metascore")
-    val Metascore: Int?,
+    val Metascore: String?,
     @Json(name = "imdbRating")
-    val imdbRating: Double?,
+    val imdbRating: String?,
     @Json(name = "imdbVotes")
-    val imdbVotes: Double?,
+    val imdbVotes: String?,
     @Json(name = "imdbID")
     val imdbID: String?,
     @Json(name = "Type")
@@ -61,5 +62,5 @@ data class Filme (
     @Json(name = "Website")
     val Website: String?,
     @Json(name = "Response")
-    val Response: Boolean?
+    val Response: Boolean
 ): Parcelable

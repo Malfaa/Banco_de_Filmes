@@ -4,9 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -29,7 +32,7 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
         modifier = modifier
             .background(cartaz_bg)
             .clickable {
-                navController.navigate("info"){
+                navController.navigate("info") {
                     popUpTo("main")
                 }
             }
@@ -38,7 +41,8 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
         AsyncImage(model = viewModel.filmes.Poster, contentDescription = null)
 
         Row() {
-            Text(text = viewModel.filmes.Title)
+            Text(text = viewModel.filmes.Title.toString())
+            Spacer(modifier = modifier.width(20.dp))
             val imagem = when (viewModel.filmes.Rated) {
                 "G" -> R.drawable.livre_vetor
                 "PG" -> R.drawable.dez_vetor
@@ -50,7 +54,7 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
 
         }
 
-        Text(text = viewModel.filmes.Genre)
+        Text(text = viewModel.filmes.Genre.toString())
 
     }
 

@@ -1,10 +1,9 @@
-package com.malfa.bancodefilmes.data
+package com.malfa.bancodefilmes.room
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.malfa.bancodefilmes.Constantes
+import com.malfa.bancodefilmes.utils.Constantes
 import com.malfa.bancodefilmes.retrofit.models.Filme
 
 @Dao

@@ -1,6 +1,6 @@
 package com.malfa.bancodefilmes.retrofit
 
-import com.malfa.bancodefilmes.Constantes
+import com.malfa.bancodefilmes.utils.Constantes
 import com.malfa.bancodefilmes.retrofit.models.Filme
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -20,6 +20,7 @@ object OmdbApi{
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .client(OmdbHttpClient.getClient())
         .baseUrl(BASE_URL)
         .build()
 

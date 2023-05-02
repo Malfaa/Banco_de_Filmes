@@ -10,7 +10,7 @@ data class Rating(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     @Json(name = "Source")
-    val Source: String,
+    var Source: String?,
     @Json(name = "Value")
-    val Value: String
+    var Value: String?
 ): Parcelable

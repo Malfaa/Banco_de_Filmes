@@ -1,6 +1,6 @@
 package com.malfa.bancodefilmes.repository
 
-import com.malfa.bancodefilmes.data.FilmeDatabase
+import com.malfa.bancodefilmes.room.FilmeDatabase
 import com.malfa.bancodefilmes.retrofit.OmdbApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,6 +1,6 @@
 package com.malfa.bancodefilmes
 
-import com.malfa.bancodefilmes.data.FilmeDatabase
+import com.malfa.bancodefilmes.room.FilmeDatabase
 import com.malfa.bancodefilmes.repository.RepositorioImpl
 import com.malfa.bancodefilmes.retrofit.OmdbApi
 import org.junit.Test

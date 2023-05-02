@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id 'com.google.devtools.ksp'
 
 }
 
@@ -83,8 +84,10 @@ dependencies {
     testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
 
     //room
-    implementation 'androidx.room:room-common:2.5.1'
-    implementation 'androidx.room:room-ktx:2.5.1'
+    implementation "androidx.room:room-common:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    ksp "androidx.room:room-compiler:$room_version"
+
 
     //moshi
     implementation "com.squareup.moshi:moshi:$moshi_version"
@@ -96,7 +99,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
 
-    //Coil
+    //coil
     implementation "io.coil-kt:coil-compose:$coil_version"
 
     //navigation
