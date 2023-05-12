@@ -9,11 +9,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import com.malfa.bancodefilmes.MainViewModel
 import com.malfa.bancodefilmes.R
 import com.malfa.bancodefilmes.compose.MainFragment
@@ -38,7 +40,7 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
             }
 
     ) {
-        AsyncImage(model = viewModel.filmes.value?.Poster, contentDescription = null)
+        SubcomposeAsyncImage(model = viewModel.filmes.value?.Poster, contentDescription = null)
 
         Row() {
             Text(text = viewModel.filmes.value?.Title.toString())
@@ -50,12 +52,34 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
                 "R" -> R.drawable.dezesseis_vetor
                 else  -> R.drawable.dezoito_vetor
             }
-            AsyncImage(model = imagem, contentDescription = null)
+            SubcomposeAsyncImage(model = imagem, contentDescription = null)
 
         }
 
         Text(text = viewModel.filmes.value?.Genre.toString())
 
     }
+
+}
+
+@Preview
+@Composable
+fun Teste(modifier: Modifier = Modifier){ //todo entender como que funciona o layout no compose
+                                          // depois corrigir o problema de memory leak
+
+        SubcomposeAsyncImage(
+            model = "https://m.media-amazon.com/images/M/MV5BOGEwMTQyMDktMWUwZC00MzExLTg1MGMtYWJiNWNhMzIyMGU5XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_SX300.jpg",
+            contentDescription = null
+        )
+
+        Row() {
+            Text(text = "Ice Age")
+            Spacer(modifier = modifier.width(20.dp))
+
+            SubcomposeAsyncImage(model = R.drawable.livre_vetor, contentDescription = null)
+
+        }
+
+        Text(text = "Aventura")
 
 }
