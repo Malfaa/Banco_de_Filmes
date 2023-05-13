@@ -5,6 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -65,14 +67,21 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
 @Preview
 @Composable
 fun Teste(modifier: Modifier = Modifier){ //todo entender como que funciona o layout no compose
-                                          // depois corrigir o problema de memory leak
+    // depois corrigir o problema de memory leak
 
+    Column(
+        modifier = modifier
+            .padding(80.dp)
+            .background(cartaz_bg)
+    ) {
         SubcomposeAsyncImage(
             model = "https://m.media-amazon.com/images/M/MV5BOGEwMTQyMDktMWUwZC00MzExLTg1MGMtYWJiNWNhMzIyMGU5XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_SX300.jpg",
             contentDescription = null
         )
 
-        Row() {
+        Row(modifier = modifier
+
+        ) {
             Text(text = "Ice Age")
             Spacer(modifier = modifier.width(20.dp))
 
@@ -81,5 +90,5 @@ fun Teste(modifier: Modifier = Modifier){ //todo entender como que funciona o la
         }
 
         Text(text = "Aventura")
-
+    }
 }
