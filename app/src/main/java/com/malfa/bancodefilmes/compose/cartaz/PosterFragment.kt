@@ -6,8 +6,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,11 +23,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
-import coil.compose.SubcomposeAsyncImage
 import com.malfa.bancodefilmes.MainViewModel
 import com.malfa.bancodefilmes.R
 import com.malfa.bancodefilmes.compose.MainFragment
 import com.malfa.bancodefilmes.compose.info_filme.InfoFragment
+import com.malfa.bancodefilmes.ui.theme.Typography
 import com.malfa.bancodefilmes.ui.theme.cartaz_bg
 
 @Composable
@@ -33,22 +36,39 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
 
     NavHost(navController = navController, startDestination = "main") {
         composable("main") { MainFragment() }
-        composable("info"){ InfoFragment(viewModel) }
+        composable("info") { InfoFragment(viewModel) }
     }
-    Column(
-        modifier = modifier
-            .background(cartaz_bg)
-            .clickable {
-                navController.navigate("info") {
-                    popUpTo("main")
-                }
+
+    Column(modifier = modifier
+        .background(cartaz_bg)
+        .clickable {
+            navController.navigate("info") {
+                popUpTo("main")
             }
+        }) {
 
-    ) {
-        SubcomposeAsyncImage(model = viewModel.filmes.value?.Poster, contentDescription = null)
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(top = 40.dp, bottom = 40.dp)
+        ) {
+            AsyncImage(
+                model = viewModel.filmes.value?.Poster,
+                contentDescription = null,
+                modifier = modifier
+                    .height(300.dp)
+                    .width(300.dp)
+            )
+        }
 
-        Row() {
-            Text(text = viewModel.filmes.value?.Title.toString())
+        Row(modifier = modifier.fillMaxWidth()) {
+            Text(
+                text = viewModel.filmes.value?.Title.toString(),
+                style = Typography.h4,
+                modifier = modifier
+                    .padding(start = 10.dp)
+            )
             Spacer(modifier = modifier.width(20.dp))
             val imagem = when (viewModel.filmes.value?.Rated) {
                 "G" -> R.drawable.livre_vetor
@@ -57,43 +77,78 @@ fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
                 "R" -> R.drawable.dezesseis_vetor
                 else  -> R.drawable.dezoito_vetor
             }
-            SubcomposeAsyncImage(model = imagem, contentDescription = null)
-
+            Image(
+                painterResource(id = imagem),
+                modifier = modifier
+                    .size(45.dp)
+                    .padding(4.dp),
+//                contentScale = ContentScale.Crop,
+                contentDescription = null
+            )
         }
 
-        Text(text = viewModel.filmes.value?.Genre.toString())
+        Text(
+            text = viewModel.filmes.value?.Genre.toString(),
+            style = Typography.h4,
+            modifier = modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 20.dp)
+                .padding(start = 10.dp)
+        )
 
     }
-
 }
 
 @Preview
 @Composable
-fun Teste(modifier: Modifier = Modifier){ //todo entender como que funciona o layout no compose
+fun Teste(modifier: Modifier = Modifier) { //todo entender como que funciona o layout no compose
     // depois corrigir o problema de memory leak
 
     Column(
         modifier = modifier
-//            .padding(start = 80.dp, end = 80.dp, bottom = 80.dp, top = 40.dp)
             .background(cartaz_bg)
     ) {
-        AsyncImage(
-            model = "https://m.media-amazon.com/images/M/MV5BOGEwMTQyMDktMWUwZC00MzExLTg1MGMtYWJiNWNhMzIyMGU5XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_SX300.jpg",
-            contentDescription = null,
-            alignment = Alignment.Center,
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier
-                .height(300.dp)
-                .width(300.dp)
+                .fillMaxWidth()
+                .padding(top = 40.dp, bottom = 40.dp)
+        ) {
+            AsyncImage(
+                model = "https://m.media-amazon.com/images/M/MV5BOGEwMTQyMDktMWUwZC00MzExLTg1MGMtYWJiNWNhMzIyMGU5XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_SX300.jpg",
+                contentDescription = null,
+//                alignment = Alignment.Center,
+                modifier = modifier
+                    .height(300.dp)
+                    .width(300.dp)
+            )
+        }
+
+        Row(modifier = modifier.fillMaxWidth()) {
+            Text(
+                text = "Ice Age",
+                style = Typography.h4,
+                modifier = modifier
+                    .padding(start = 10.dp)
+            ) // TODO: alterar fonte e tamanhos
+            Spacer(modifier = modifier.width(20.dp))
+            Image(
+                painterResource(id = R.drawable.livre_vetor),
+                modifier = modifier
+                    .size(45.dp)
+                    .padding(4.dp),
+//                contentScale = ContentScale.Crop,
+                contentDescription = null
+            )
+        }
+
+        Text(
+            text = "Aventura",
+            style = Typography.h4,
+            modifier = modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 20.dp)
+                .padding(start = 10.dp)
         )
-
-
-
-        Text(text = "Aventura")
-    }
-    Row(modifier = modifier) {
-        Text(text = "Ice Age")
-        Spacer(modifier = modifier.width(20.dp))
-        Image(painterResource(id = R.drawable.livre_vetor), contentDescription = null)
 
     }
 }
