@@ -1,6 +1,5 @@
 package com.malfa.bancodefilmes.retrofit
 
-import com.malfa.bancodefilmes.utils.Constantes
 import com.malfa.bancodefilmes.retrofit.models.Filme
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -11,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 object OmdbApi{
-    private const val BASE_URL = "http://www.omdbapi.com/"
+    private const val BASE_URL = "https://www.omdbapi.com/"
 
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
@@ -33,21 +32,21 @@ interface OmdbApiService {
     //Buscar filme por Título
     @GET("?")
     suspend fun getFilmeTitulo(
-        @Query("t=")
+        @Query("apikey")
+        api: String,
+        @Query("t")
         titulo: String,
-        @Query("plot=")
-        plot: String = "full",
-        @Query("apikey=")
-        api: String = Constantes.APIKEY // FIXME: talvez tenha que colocar os valores dos parâmetros no repo
+        @Query("plot")
+        plot: String
     ) : Filme
     //Buscar filme por ID
-    @GET("?")
-    suspend fun getFilmeId(
-        @Query("i")
-        titulo: String,
-        @Query("plot=")
-        plot: String = "full",
-        @Query("apikey=")
-        api: String = Constantes.APIKEY
-    ) : Filme
+//    @GET("?")
+//    suspend fun getFilmeId(
+//        @Query("i")
+//        titulo: String,
+//        @Query("plot=")
+//        plot: String = "full",
+//        @Query("apikey=")
+//        api: String = Constantes.APIKEY
+//    ) : Filme
 }

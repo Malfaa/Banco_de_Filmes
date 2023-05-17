@@ -14,8 +14,8 @@ interface FilmeDao {
     fun infosFilme(): LiveData<Filme>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun atualizandoFilme(filme: Filme)
+    suspend fun atualizandoFilme(filme: Filme)
 
     @Query("DELETE FROM ${Constantes.TABLE_NAME}")
-    fun deletandoFilme()
+    suspend fun deletandoFilme()
 }

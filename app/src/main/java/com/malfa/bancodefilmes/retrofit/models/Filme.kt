@@ -62,5 +62,5 @@ data class Filme (
     @Json(name = "Website")
     val Website: String?,
     @Json(name = "Response")
-    val Response: Boolean
+    val Response: String
 ): Parcelable
