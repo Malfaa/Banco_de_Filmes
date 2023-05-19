@@ -28,19 +28,5 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-// todo o que eu posso fazer é pegar a resposta em json que a api retorna, passar como resposta
-//  pro database, assim ele pega e coloca sem nenhum tipo de erro. A questão é, como fazer um parse
-//  simples pro database? Problema ta no koin pra iniciar o DB, isso deve estar acontecendo pq
-//  o db não tem info inicial
 
 // todo o que eu posso fazer é um botão no main que tem uma lista de todos os filmes pesquisados
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    BancoDeFilmesTheme {
-        MainFragment()
-    }
-}

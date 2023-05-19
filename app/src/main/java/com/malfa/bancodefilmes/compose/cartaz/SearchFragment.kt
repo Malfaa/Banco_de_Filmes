@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,11 +38,11 @@ import com.malfa.bancodefilmes.ui.theme.cartaz_bg
 
 @Composable
 fun SearchFragment(modifier: Modifier, viewModel: MainViewModel){
-    Row(modifier = Modifier.fillMaxWidth()) {
-        var text by remember {
-            mutableStateOf(TextFieldValue(""))
-        }
+    var text by rememberSaveable {
+        mutableStateOf(TextFieldValue(""))
+    }
 
+    Row(modifier = Modifier.fillMaxWidth()) {
         OutlinedTextField(
             value = text,
             onValueChange = { novoTexto ->
@@ -72,7 +73,9 @@ fun SearchFragment(modifier: Modifier, viewModel: MainViewModel){
                 }catch (e : Exception){
                     Log.e("SearchFragment", e.message.toString())
 //                Toast.makeText(LocalContext.current.applicationContext, "Filme não encontrado.\nTente novamente.", Toast.LENGTH_SHORT).show()
-                }} ,
+                }
+                text.text.isEmpty()
+            } ,
             colors = ButtonDefaults.buttonColors(cartaz_bg),
             modifier = Modifier
                 .align(alignment = Alignment.CenterVertically)
@@ -90,10 +93,13 @@ fun SearchFragment(modifier: Modifier, viewModel: MainViewModel){
 @Composable
 fun SearchPreview(){
 //    SearchFragment(modifier = Modifier, viewModel = MainViewModel(RepositorioImpl(OmdbApi, FilmeDatabase.getInstance())))
+    var valor by remember {
+        mutableStateOf("")
+    }
     Row(modifier = Modifier.fillMaxWidth()) {
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = valor,
+            onValueChange = {valor = it},
             placeholder = {Text(stringResource(id = R.string.search))},
             leadingIcon = {
                 Icon(
@@ -112,13 +118,13 @@ fun SearchPreview(){
 
 
         Button(
-            onClick = {},
+            onClick = {valor.isEmpty()},
             colors = ButtonDefaults.buttonColors(cartaz_bg),
             modifier = Modifier
                 .align(alignment = Alignment.CenterVertically)
         ) {
             Image(
-                imageVector = Icons.Default.Search, // FIXME: mudar esse vetor talvez
+                imageVector = Icons.Default.Search,
                 contentDescription = stringResource(id = R.string.search_movie)
             )
         }

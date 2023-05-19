@@ -2,6 +2,7 @@ package com.malfa.bancodefilmes.compose.cartaz
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Card
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,28 +21,37 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import coil.compose.AsyncImage
 import com.malfa.bancodefilmes.MainViewModel
 import com.malfa.bancodefilmes.R
+import com.malfa.bancodefilmes.compose.MainFragment
+import com.malfa.bancodefilmes.compose.info_filme.InfoFragment
 import com.malfa.bancodefilmes.ui.theme.Typography
 import com.malfa.bancodefilmes.ui.theme.cartaz_bg
 
 @Composable
-fun PosterFragment(modifier: Modifier, viewModel: MainViewModel){
-//    val navController = rememberNavController() fixme problema é aqui
-//
-//    NavHost(navController = navController, startDestination = "main") {
-//        composable("main") { MainFragment() }
-//        composable("info") { InfoFragment(viewModel) } fixme onValueChange muda tela
-//    }
-    Surface(modifier = modifier.padding(40.dp)) {
+fun PosterFragment(nav: NavHostController, modifier: Modifier, viewModel: MainViewModel){//fixme problema é aqui    fixme onValueChange muda tela
+
+    NavHost(navController = nav, startDestination = "main") {
+        composable("main") { MainFragment() }
+        composable("info") { InfoFragment(viewModel) }
+    }
+    Surface(
+        modifier = modifier
+            .padding(40.dp)
+            .clickable(
+                onClick = {
+                    nav.navigate("info") {
+                        popUpTo("main")
+                    }
+                }
+            )
+    ) {
         Column(modifier = modifier
             .background(cartaz_bg)
-//            .clickable {
-//                navController.navigate("info") {
-//                    popUpTo("main")
-//                }
-//            }
         ) {
 
             Column(
@@ -115,7 +126,7 @@ fun Teste(modifier: Modifier = Modifier) { //todo entender como que funciona o l
                 AsyncImage(
                     model = "https://m.media-amazon.com/images/M/MV5BOGEwMTQyMDktMWUwZC00MzExLTg1MGMtYWJiNWNhMzIyMGU5XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_SX300.jpg",
                     contentDescription = null,
-//                alignment = Alignment.Center,
+//                    alignment = Alignment.Center,
                     modifier = modifier
                         .height(300.dp)
                         .width(300.dp)
