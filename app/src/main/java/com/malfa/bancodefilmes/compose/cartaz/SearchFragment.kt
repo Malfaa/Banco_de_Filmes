@@ -39,16 +39,24 @@ import com.malfa.bancodefilmes.ui.theme.cartaz_bg
 @Composable
 fun SearchFragment(modifier: Modifier, viewModel: MainViewModel){
     var text by rememberSaveable {
-        mutableStateOf(TextFieldValue(""))
+        mutableStateOf("")
     }
 
+    SearchContent(text, eventoText = {text = it},modifier, viewModel)
+}
+
+@Composable
+private fun SearchContent(
+    text: String,
+    eventoText: (String) -> Unit,
+    modifier: Modifier,
+    viewModel: MainViewModel
+) {
     Row(modifier = Modifier.fillMaxWidth()) {
         OutlinedTextField(
             value = text,
-            onValueChange = { novoTexto ->
-                text = novoTexto
-            },
-            placeholder = {Text(stringResource(id = R.string.search))},
+            onValueChange = eventoText,
+            placeholder = { Text(stringResource(id = R.string.search)) },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.List,
@@ -66,20 +74,21 @@ fun SearchFragment(modifier: Modifier, viewModel: MainViewModel){
         Button(
             onClick = {
                 try {
-                    viewModel.atualizandoFilme(text.text
-                        .lowercase()
-                        .replace("/[^A-Z0-9]+/ig", "_")
+                    viewModel.atualizandoFilme(
+                        text
+                            .lowercase()
+                            .replace("/[^A-Z0-9]+/ig", "_")
                     )
-                }catch (e : Exception){
+                } catch (e: Exception) {
                     Log.e("SearchFragment", e.message.toString())
 //                Toast.makeText(LocalContext.current.applicationContext, "Filme não encontrado.\nTente novamente.", Toast.LENGTH_SHORT).show()
                 }
-                text.text.isEmpty()
-            } ,
+                text.isEmpty()
+            },
             colors = ButtonDefaults.buttonColors(cartaz_bg),
             modifier = Modifier
                 .align(alignment = Alignment.CenterVertically)
-        ){
+        ) {
             Image(
                 imageVector = Icons.Default.Search,
                 contentDescription = stringResource(id = R.string.search_movie)

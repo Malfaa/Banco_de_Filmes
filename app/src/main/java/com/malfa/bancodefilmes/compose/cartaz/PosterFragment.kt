@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Card
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,24 +20,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.malfa.bancodefilmes.MainViewModel
 import com.malfa.bancodefilmes.R
-import com.malfa.bancodefilmes.compose.MainFragment
-import com.malfa.bancodefilmes.compose.info_filme.InfoFragment
 import com.malfa.bancodefilmes.ui.theme.Typography
 import com.malfa.bancodefilmes.ui.theme.cartaz_bg
 
 @Composable
-fun PosterFragment(nav: NavHostController, modifier: Modifier, viewModel: MainViewModel){//fixme problema é aqui    fixme onValueChange muda tela
+fun PosterFragment(
+    nav: NavController,
+    modifier: Modifier,
+    viewModel: MainViewModel){//fixme problema é aqui    fixme onValueChange muda tela
 
-    NavHost(navController = nav, startDestination = "main") {
-        composable("main") { MainFragment() }
-        composable("info") { InfoFragment(viewModel) }
-    }
+//    NavHost(navController = nav, startDestination = "main") {
+//        composable("main") { }
+//        composable("info") { InfoFragment(viewModel) }
+//    }
     Surface(
         modifier = modifier
             .padding(40.dp)

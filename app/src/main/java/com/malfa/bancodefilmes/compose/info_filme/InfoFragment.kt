@@ -29,7 +29,7 @@ import com.malfa.bancodefilmes.ui.theme.background
 import com.malfa.bancodefilmes.ui.theme.background_info
 
 @Composable
-fun InfoFragment( viewModel : MainViewModel){
+fun InfoFragment( ){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
