@@ -104,4 +104,8 @@ dependencies {
 
     //navigation
     implementation "androidx.navigation:navigation-compose:$navigation_version"
+
+    //runtime
+    implementation "androidx.compose.runtime:runtime:$androidx_version"
+    implementation "androidx.compose.runtime:runtime-livedata:$androidx_version"
 }

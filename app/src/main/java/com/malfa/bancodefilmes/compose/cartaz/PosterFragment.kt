@@ -21,30 +21,26 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
-import com.malfa.bancodefilmes.MainViewModel
 import com.malfa.bancodefilmes.R
+import com.malfa.bancodefilmes.retrofit.models.Filme
 import com.malfa.bancodefilmes.ui.theme.Typography
 import com.malfa.bancodefilmes.ui.theme.cartaz_bg
+import com.malfa.bancodefilmes.utils.Tela
 
 @Composable
 fun PosterFragment(
-    nav: NavController,
+    navController: NavController,
     modifier: Modifier,
-    viewModel: MainViewModel){//fixme problema é aqui    fixme onValueChange muda tela
-
-//    NavHost(navController = nav, startDestination = "main") {
-//        composable("main") { }
-//        composable("info") { InfoFragment(viewModel) }
-//    }
+    filme: Filme
+){
     Surface(
         modifier = modifier
             .padding(40.dp)
             .clickable(
                 onClick = {
-                    nav.navigate("info") {
-                        popUpTo("main")
-                    }
+                    navController.navigate(Tela.Info.rota)
                 }
             )
     ) {
@@ -59,7 +55,7 @@ fun PosterFragment(
                     .padding(top = 40.dp, bottom = 40.dp)
             ) {
                 AsyncImage(
-                    model = viewModel.filmes.value?.Poster,
+                    model = filme.Poster,
                     contentDescription = null,
                     modifier = modifier
                         .height(300.dp)
@@ -69,13 +65,13 @@ fun PosterFragment(
 
             Row(modifier = modifier.fillMaxWidth()) {
                 Text(
-                    text = viewModel.filmes.value?.Title.toString(),
+                    text = filme.Title.toString(),
                     style = Typography.h4,
                     modifier = modifier
                         .padding(start = 10.dp)
                 )
                 Spacer(modifier = modifier.width(20.dp))
-                val imagem = when (viewModel.filmes.value?.Rated) {
+                val imagem = when (filme.Rated) {
                     "G" -> R.drawable.livre_vetor
                     "PG" -> R.drawable.dez_vetor
                     "PG-13" -> R.drawable.catorze_vetor
@@ -93,8 +89,8 @@ fun PosterFragment(
             }
 
             Text(
-                text = viewModel.filmes.value?.Genre.toString(),
-                style = Typography.h4,
+                text = filme.Genre.toString(),
+                style = Typography.h6,
                 modifier = modifier
                     .paddingFromBaseline(top = 40.dp, bottom = 20.dp)
                     .padding(start = 10.dp)
@@ -104,59 +100,13 @@ fun PosterFragment(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun Teste(modifier: Modifier = Modifier) { //todo entender como que funciona o layout no compose
-    // depois corrigir o problema de memory leak
-
-    Surface(modifier = modifier.padding(40.dp)){
-        Column(
-            modifier = modifier
-                .background(cartaz_bg)
-        ) {
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(top = 40.dp, bottom = 40.dp)
-            ) {
-                AsyncImage(
-                    model = "https://m.media-amazon.com/images/M/MV5BOGEwMTQyMDktMWUwZC00MzExLTg1MGMtYWJiNWNhMzIyMGU5XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_SX300.jpg",
-                    contentDescription = null,
-//                    alignment = Alignment.Center,
-                    modifier = modifier
-                        .height(300.dp)
-                        .width(300.dp)
-                )
-            }
-
-            Row(modifier = modifier.fillMaxWidth()) {
-                Text(
-                    text = "Ice Age",
-                    style = Typography.h4,
-                    modifier = modifier
-                        .padding(start = 10.dp)
-                )
-                Spacer(modifier = modifier.width(20.dp))
-                Image(
-                    painterResource(id = R.drawable.livre_vetor),
-                    modifier = modifier
-                        .size(45.dp)
-                        .padding(4.dp),
-//                contentScale = ContentScale.Crop,
-                    contentDescription = null
-                )
-            }
-
-            Text(
-                text = "Aventura",
-                style = Typography.h4,
-                modifier = modifier
-                    .paddingFromBaseline(top = 40.dp, bottom = 20.dp)
-                    .padding(start = 10.dp)
-            )
-
-        }
-    }
+fun PosterPreview(){
+    val navController = rememberNavController()
+    val dummy = Filme(
+        1,
+        "Ice Age",
+        "2012","PG",null,null,"Adventure",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"true")
+    PosterFragment(navController = navController, modifier = Modifier, filme = dummy)
 }
