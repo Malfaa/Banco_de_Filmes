@@ -20,7 +20,7 @@ fun NavGraph(navController: NavHostController, viewModel : MainViewModel, filme:
             Tela.Info.rota,
         ) {
             if (filme != null) {
-                InfoFragment(filme = filme, navController = navController)
+                InfoFragment(filme = filme)
             }
         }
     }
