@@ -2,6 +2,7 @@ package com.malfa.bancodefilmes.compose.cartaz
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,13 +29,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.malfa.bancodefilmes.MainViewModel
+import com.malfa.bancodefilmes.IMainViewModel
+import com.malfa.bancodefilmes.MainViewModelPreview
 import com.malfa.bancodefilmes.R
 import com.malfa.bancodefilmes.ui.theme.cartaz_bg
 
 @Composable
-fun SearchFragment(modifier: Modifier, viewModel: MainViewModel){
+fun SearchFragment(modifier: Modifier, viewModel: IMainViewModel){ // TODO: preview
     var text by rememberSaveable {
         mutableStateOf("")
     }
@@ -47,9 +50,14 @@ private fun SearchContent(
     text: String,
     eventoText: (String) -> Unit,
     modifier: Modifier,
-    viewModel: MainViewModel
+    viewModel: IMainViewModel
 ) {
-    Row(modifier = Modifier.fillMaxWidth()) {
+    Row(modifier = Modifier
+        .padding(end = 15.dp)
+        .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
         OutlinedTextField(
             value = text,
             onValueChange = eventoText,
@@ -97,8 +105,8 @@ private fun SearchContent(
     }
 }
 
-//@Preview
-//@Composable
-//fun SearchPreview(){
-//    SearchFragment(modifier = , viewModel = )
-//}
+@Preview
+@Composable
+fun SearchPreview(){
+    SearchFragment(modifier = Modifier, viewModel = MainViewModelPreview())
+}

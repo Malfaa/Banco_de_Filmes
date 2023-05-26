@@ -17,7 +17,7 @@ import com.malfa.bancodefilmes.ui.theme.BancoDeFilmesTheme
 import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
-    lateinit var navController: NavHostController
+    private lateinit var navController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -40,3 +40,4 @@ class MainActivity : ComponentActivity() {
 
 // TODO: o que eu posso fazer é um botão no main que tem uma lista de todos os filmes pesquisados
 // TODO: arrumar screen size
+// TODO: preview e testes dos composables

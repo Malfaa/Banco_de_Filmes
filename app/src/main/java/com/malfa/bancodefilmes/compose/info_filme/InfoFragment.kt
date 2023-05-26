@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.malfa.bancodefilmes.R
 import com.malfa.bancodefilmes.retrofit.models.Filme
@@ -102,62 +101,14 @@ fun TextoInfo(id: Int, text: String?){
         color = Color.White)
 }
 
-//@Preview
-//@Composable
-//fun InfoPreview(){
-//    Column(
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        modifier = Modifier
-//            .background(background)
-//            .fillMaxHeight()
-//    ) {
-//        Spacer(modifier = Modifier.height(30.dp))
-//        AsyncImage(
-//            model = "https://m.media-amazon.com/images/M/MV5BOGEwMTQyMDktMWUwZC00MzExLTg1MGMtYWJiNWNhMzIyMGU5XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_SX300.jpg",
-//            modifier = Modifier
-//                .padding(16.dp)
-//                .height(420.dp)
-//                .width(420.dp),
-//            contentDescription = stringResource(id = R.string.poster_content_description).format("Teste")
-//        )
-//        Spacer(modifier = Modifier.height(15.dp))
-//
-//        Surface(shape = Shapes.small, modifier = Modifier.padding(bottom = 16.dp)) {
-//            Column(
-//                modifier = Modifier
-//                    .background(background_info)
-//                    .padding(start = 8.dp, top = 8.dp, bottom = 8.dp)
-//                    .verticalScroll(rememberScrollState())
-//                    .fillMaxWidth(0.75F)
-//                    .fillMaxHeight(0.75F)
-//                    ,
-//                horizontalAlignment = Alignment.Start,
-//                verticalArrangement = Arrangement.SpaceBetween,
-//
-//            ) {
-//                TextoInfo(R.string.titulo_info, "Ice Age")
-//                TextoInfo(R.string.genero_info, "Teste")
-//                Text(text = stringResource(id = R.string.rated_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.lancado_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.ano_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.plot_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.director_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.writer_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.actors_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.runtime_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.language_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.country_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.awards_info).format("Teste"), style = Typography.h6, color = Color.White)
-////            Text(text = stringResource(id = R.string.ratings_info).format("Teste").Ratings, style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.metascore_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.imdb_rating_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.imdb_id_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.type_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.dvd_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.box_office_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.production_info).format("Teste"), style = Typography.h6, color = Color.White)
-//                Text(text = stringResource(id = R.string.website_info).format("Teste"), style = Typography.h6, color = Color.White)
-//            }
-//        }
-//    }
-//}
+@Preview
+@Composable
+fun InfoPreview(){
+    val dummy = Filme(
+        1,
+        "Ice Age",
+        "2012","PG",null,null,"Adventure",null,null,null,null,null,null,null,
+        "https://m.media-amazon.com/images/M/MV5BOGEwMTQyMDktMWUwZC00MzExLTg1MGMtYWJiNWNhMzIyMGU5XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_SX300.jpg",
+        null,null,null,null,null,null,null,null,null,"true")
+    InfoFragment(filme = dummy)
+}

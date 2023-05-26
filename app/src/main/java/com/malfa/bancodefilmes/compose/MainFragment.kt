@@ -8,6 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.malfa.bancodefilmes.MainViewModel
+import com.malfa.bancodefilmes.MainViewModelPreview
 import com.malfa.bancodefilmes.compose.cartaz.PosterFragment
 import com.malfa.bancodefilmes.compose.cartaz.SearchFragment
 import com.malfa.bancodefilmes.retrofit.models.Filme
@@ -29,7 +30,6 @@ fun MainFragment (navController: NavController, modifier: Modifier = Modifier, v
 @Composable
 fun MainPreview(modifier: Modifier = Modifier){
     val navController = rememberNavController()
-    val viewModel: MainViewModel
     val dummy = Filme(
         1,
         "Ice Age",
@@ -38,6 +38,6 @@ fun MainPreview(modifier: Modifier = Modifier){
         modifier = modifier.background(background)
     ){
         PosterFragment(navController = navController, modifier = Modifier, filme = dummy)
-//        SearchFragment(modifier, viewModel = viewModel)
+        SearchFragment(modifier, viewModel = MainViewModelPreview())
     }
 }

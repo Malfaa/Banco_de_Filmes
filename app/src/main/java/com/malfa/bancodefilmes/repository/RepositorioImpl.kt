@@ -6,14 +6,9 @@ import com.malfa.bancodefilmes.utils.Constantes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-interface Repositorio{
-    suspend fun cacheFilme(filme : String)
-    suspend fun deletandoFilme()
-}
-
 class RepositorioImpl(private val api: OmdbApi, private val database : FilmeDatabase) : Repositorio {
     //Network & Database
-    val getFilme = database.dao.infosFilme()
+    override val getFilme = database.dao.infosFilme()
 
     override suspend fun cacheFilme(filme: String) {
         withContext(Dispatchers.IO){
