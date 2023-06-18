@@ -4,15 +4,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.malfa.bancodefilmes.MainViewModel
 import com.malfa.bancodefilmes.MainViewModelPreview
+import com.malfa.bancodefilmes.R
 import com.malfa.bancodefilmes.compose.cartaz.PosterFragment
 import com.malfa.bancodefilmes.compose.cartaz.SearchFragment
 import com.malfa.bancodefilmes.retrofit.models.Filme
 import com.malfa.bancodefilmes.ui.theme.background
+import com.malfa.bancodefilmes.utils.Tela
 
 @Composable
 fun MainFragment (navController: NavController, modifier: Modifier = Modifier, viewModel: MainViewModel, filme: Filme?){
@@ -22,7 +25,10 @@ fun MainFragment (navController: NavController, modifier: Modifier = Modifier, v
         if (filme != null) {
             PosterFragment(navController, modifier = modifier, filme = filme)
         }
-        SearchFragment(modifier, viewModel)
+        BotaoFragment(navController.navigate(Tela.Lista.rota), stringResource(id = R.string.historico))
+        SearchFragment( modifier, viewModel)
+
+        //novoFragment
     }
 }
 

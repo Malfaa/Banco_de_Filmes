@@ -23,6 +23,9 @@ fun NavGraph(navController: NavHostController, viewModel : MainViewModel, filme:
                 InfoFragment(filme = filme)
             }
         }
+        composable(Tela.Lista.rota){
+            ListaFilmesFragment(navController = navController, viewModel = viewModel)
+        }
     }
 
 }

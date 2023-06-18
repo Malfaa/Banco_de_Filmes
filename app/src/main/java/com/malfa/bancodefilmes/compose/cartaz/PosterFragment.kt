@@ -1,6 +1,5 @@
 package com.malfa.bancodefilmes.compose.cartaz
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -11,20 +10,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
-import com.malfa.bancodefilmes.R
 import com.malfa.bancodefilmes.retrofit.models.Filme
 import com.malfa.bancodefilmes.ui.theme.Typography
 import com.malfa.bancodefilmes.ui.theme.cartaz_bg
@@ -73,21 +69,9 @@ fun PosterFragment(
                         .padding(start = 10.dp)
                 )
                 Spacer(modifier = modifier.width(20.dp))
-                val imagem = when (filme.Rated) {
-                    "G" -> R.drawable.livre_vetor
-                    "PG" -> R.drawable.dez_vetor
-                    "PG-13" -> R.drawable.catorze_vetor
-                    "R" -> R.drawable.dezesseis_vetor
-                    else -> R.drawable.dezoito_vetor
-                }
-                Image(
-                    painterResource(id = imagem),
-                    modifier = modifier
-                        .size(45.dp)
-                        .padding(4.dp),
-//                contentScale = ContentScale.Crop,
-                    contentDescription = null
-                )
+
+                ClassificacaoImagem(filme = filme)
+
             }
 
             Text(

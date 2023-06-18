@@ -14,8 +14,9 @@
     <string name="lancado_info">Estreiou: %s</string>
     <string name="ano_info">Ano: %s</string>
 
-<!--    Saiba Mais -->
-    <string name="saiba_mais">Saiba Mais</string>
+<!--    Lista Fragment -->
+    <string name="historico">Histórico</string>
+    <string name="lista_filmes">Lista de Filmes</string>
 
 <!--    Após saiba mais em Info Fragment -->
     <string name="plot_info">Plot: %s</string>

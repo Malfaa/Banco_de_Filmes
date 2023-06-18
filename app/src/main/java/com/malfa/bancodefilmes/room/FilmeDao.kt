@@ -12,6 +12,8 @@ import com.malfa.bancodefilmes.retrofit.models.Filme
 interface FilmeDao {
     @Query("SELECT * FROM ${Constantes.TABLE_NAME}")
     fun infosFilme(): LiveData<Filme>
+    @Query("SELECT * FROM ${Constantes.TABLE_NAME}")
+    fun infosFilmes(): LiveData<List<Filme>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun atualizandoFilme(filme: Filme)

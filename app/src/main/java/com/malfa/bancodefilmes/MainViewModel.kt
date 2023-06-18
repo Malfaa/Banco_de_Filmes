@@ -11,12 +11,17 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 interface IMainViewModel {
-    val filmes: LiveData<Filme>
+    val filme: LiveData<Filme>
+
+    val filmes: LiveData<List<Filme>>
+    //mexer no dao, database, viewmodel pra listar todos os filmes
     fun atualizandoFilme(filme: String)
 }
 
 class MainViewModel(private val repositorio: Repositorio) : ViewModel(), IMainViewModel {
-    override val filmes = repositorio.getFilme
+    override val filme = repositorio.getFilme
+
+    override val filmes = repositorio.getFilmes
 
     override fun atualizandoFilme(filme: String){
         try {
@@ -33,7 +38,10 @@ class MainViewModel(private val repositorio: Repositorio) : ViewModel(), IMainVi
 }
 
 class MainViewModelPreview : IMainViewModel {
-    override val filmes: LiveData<Filme>
+    override val filme: LiveData<Filme>
+        get() = TODO("Not yet implemented")
+
+    override val filmes: LiveData<List<Filme>>
         get() = TODO("Not yet implemented")
 
     override fun atualizandoFilme(filme: String) {

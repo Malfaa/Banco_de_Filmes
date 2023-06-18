@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
             BancoDeFilmesTheme {
                 navController = rememberNavController()
                 val viewModel : MainViewModel = koinViewModel()
-                val filme by viewModel.filmes.observeAsState()
+                val filme by viewModel.filme.observeAsState()
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-// TODO: o que eu posso fazer é um botão no main que tem uma lista de todos os filmes pesquisados
 // TODO: arrumar screen size
 // TODO: preview e testes dos composables
+
+//fazer 2 composables, um do botão no main e o outro a lista com os filmes pesquisados, tipo histórico

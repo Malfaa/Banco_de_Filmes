@@ -10,6 +10,8 @@ class RepositorioImpl(private val api: OmdbApi, private val database : FilmeData
     //Network & Database
     override val getFilme = database.dao.infosFilme()
 
+    override val getFilmes = database.dao.infosFilmes()
+
     override suspend fun cacheFilme(filme: String) {
         withContext(Dispatchers.IO){
             val response = api.retrofitService.getFilmeTitulo(api = Constantes.APIKEY, filme, plot = "full" )
